@@ -1,11 +1,11 @@
 <?php 
 
 namespace App;
+
 require('fetchData.php');
 
 if (isset($_GET["id"])) {
     $unicorn = getUnicorn($_GET["id"]);
-    echo $unicorn;
 }
 
 ?>
@@ -22,11 +22,19 @@ if (isset($_GET["id"])) {
 </head>
 <body>
     <header>
-        <h1>Enhörningsdatabasen</h1>
+        <div class="container">
+            <h1>Enhörningsdatabasen</h1>
+        </div>
     </header>
-    <h2>Namn på enhörning</h2>
-    <section class="unicorn-list">
-        <!-- Lista alla enhörningar här -->
+    <section class="container unicorn-info">
+        <div class="row">
+            <div class="col-md col-xs-12">
+                <h2><?= $unicorn->name ?></h2>
+                <p><?= $unicorn->description ?></p>
+                <p><span class="bold">Sågs:</span> <?= date("Y-m-d", strtotime($unicorn->spottedWhen)) ?> av <?= $unicorn->reportedBy ?></p>
+            </div>
+            <img src=<?= $unciron->image ?> alt="Bild på enhörning" class="col-md col-xs-12">
+        </div>
     </section>
 </body>
 </html>

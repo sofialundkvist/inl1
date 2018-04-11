@@ -1,0 +1,9 @@
+header {
+    background-color: lightgray;
+    padding: 20px 15px;
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}
