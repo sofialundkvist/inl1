@@ -18,23 +18,45 @@ if (isset($_GET["id"])) {
     <title>Unicorns</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style/style.css" />
-    <link rel="stylesheet" type="text/css" href="style/unicorn.css" />
 </head>
 <body>
     <header>
         <div class="container">
             <h1>Enhörningsdatabasen</h1>
         </div>
+        <nav class="navbar navbar-expand-lg bg-dark">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="navlink menu-links" href="/index.php">Visa alla enhörningar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navlink menu-links" href="/unicorn.php">Visa specifik enhörning</a>
+                </li>
+            </ul>
+        </nav>
     </header>
-    <section class="container unicorn-info">
-        <div class="row">
-            <div class="col-md col-xs-12">
-                <h2><?= $unicorn->name ?></h2>
-                <p><?= $unicorn->description ?></p>
-                <p><span class="bold">Sågs:</span> <?= date("Y-m-d", strtotime($unicorn->spottedWhen)) ?> av <?= $unicorn->reportedBy ?></p>
-            </div>
-            <img src=<?= $unciron->image ?> alt="Bild på enhörning" class="col-md col-xs-12">
+    <section class="container main-content">
+        <div class="row center-row search-form">
+            <form action="unicorn.php" method="get" class="row">
+                <input type="text" name="id" placeholder="Skriv in id på enhörningen" />
+                <input type="submit" value="Visa enhörning" />
+            </form>
         </div>
+        <?php if ($unicorn === false): ?>
+            <p class="alert alert-danger col-sm-12">Det finns ingen enhörning med detta id</p>
+        <?php endif; ?>
+        <article class="row center-row">
+            <?php if(!$unicorn): ?>
+                <p class="col-xs-12">Sök efter en enhörning för att visa information om den</p>
+            <?php elseif (!is_null($unicorn)): ?>
+                <div class="col-md col-xs-12">
+                    <h2><?= $unicorn->name ?></h2>
+                    <p><?= $unicorn->description ?></p>
+                    <p><span class="bold">Sågs:</span> <?= date("Y-m-d", strtotime($unicorn->spottedWhen)) ?> av <?= $unicorn->reportedBy ?></p>
+                </div>
+                <img src=<?php echo $unicorn->image ?> alt="Bild på enhörning" class="col-md col-xs-12">
+            <?php endif; ?>
+        </article>
     </section>
 </body>
 </html>
