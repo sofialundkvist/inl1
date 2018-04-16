@@ -1,0 +1,42 @@
+header {
+    background-color: #B7D5D4;
+    text-align: center;
+    color: #373E40;
+}
+
+header h1 {
+    padding: 40px 0;
+}
+
+nav.navbar {
+    justify-content: center;
+}
+
+a.menu-links {
+    color: white;
+    padding: 0 10px;
+}
+
+a.menu-links:hover {
+    color: #cccccc;
+    text-decoration: none;
+}
+
+.main-content {
+    padding: 50px 0;
+}
+
+.search-form {
+    margin-bottom: 20px;
+}
+
+
+/* helper classes: */
+
+.bold {
+    font-weight: bold;
+}
+
+.center-row {
+    justify-content: center;
+}
