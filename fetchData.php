@@ -17,7 +17,8 @@ function getAllUnicorns()
             'Accept' => 'application/json'
         ]
     ]);
-    return json_decode($response->getBody());
+    $unicorns = filterOutEmpty(json_decode($response->getBody()));
+    return $unicorns;
 }
 
 function getUnicorn($id) 
@@ -29,10 +30,30 @@ function getUnicorn($id)
                 'Accept' => 'application/json'
             ]
         ]);
-        return json_decode($response->getBody());
+        $unicorn = json_decode($response->getBody());
+
+        // if unicorn does not have a name, do not return it
+        if ($unicorn->name !== "") {
+            return $unicorn;
+        } else {
+            return false;
+        }
+
     } catch(ClientException $e) {
+        // if no unicorn with this id exists
         return false;
     }
+}
+
+/**
+ * filters unicorn out of the unicorns array if it does not have a name
+ */
+function filterOutEmpty($unicorns)
+{
+    $unicorns = array_filter($unicorns, function ($unicorn) {
+        return $unicorn->name !== "";
+    });
+    return $unicorns;
 }
 
 ?>
