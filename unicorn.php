@@ -3,9 +3,19 @@
 namespace App;
 
 require('fetchData.php');
+require('logVisitors.php');
 
 if (isset($_GET["id"])) {
     $unicorn = getUnicorn($_GET["id"]);
+
+    if (!$unicorn) {
+        logVisit("User requested info about a unicorn with an id that did not exist");
+    } else {
+        logVisit("User requested info about " . $unicorn->name);
+    }
+
+} else {
+    logVisit("User visited unicorn.php to search for a unicorn");
 }
 
 ?>

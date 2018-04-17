@@ -3,6 +3,9 @@
 namespace App;
 
 require('fetchData.php');
+require('logVisitors.php');
+
+logVisit("User requested info about all unicorns");
 
 ?>
 
