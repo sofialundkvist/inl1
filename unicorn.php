@@ -53,7 +53,9 @@ if (isset($_GET["id"])) {
             </form>
         </div>
         <?php if ($unicorn === false): ?>
-            <p class="alert alert-danger col-sm-12">Det finns ingen enhörning med detta id</p>
+            <div class="row center-row">
+                <p class="alert alert-danger col-sm-12 col-md-6 message">Det finns ingen enhörning med detta id</p>
+            </div>
         <?php endif; ?>
         <article class="row center-row">
             <?php if(!$unicorn): ?>

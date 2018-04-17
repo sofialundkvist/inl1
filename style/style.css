@@ -1,5 +1,5 @@
 header {
-    background-color: #B7D5D4;
+    background-color: #F2F2F2;
     text-align: center;
     color: #373E40;
 }
@@ -28,6 +28,21 @@ a.menu-links:hover {
 
 .search-form {
     margin-bottom: 40px;
+}
+
+.page-heading {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.list-item-custom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.message {
+    text-align: center;
 }
 
 

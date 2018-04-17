@@ -34,15 +34,18 @@ logVisit("User requested info about all unicorns");
             </ul>
         </nav>
     </header>
-    <section class="container unicorn-list main-content">
-        <h2>Alla enhörningar</h2>
-        <ul class="list-group">
-        <?php
-            foreach (getAllUnicorns() as $unicorn) {
-                echo '<li class="list-group-item"><a href="unicorn.php?id=' . $unicorn->id . '">' . $unicorn->name . '</a></li>';
-            }
-        ?>
-        </ul>
+    <section class="container main-content">
+        <h2 class="page-heading">Alla enhörningar</h2>
+        <section class="row center-row">
+            <ul class="list-group col-sm-12 col-md-10">
+            <?php foreach (getAllUnicorns() as $unicorn) : ?>
+                <li class="list-group-item list-item-custom">
+                    <a href="unicorn.php?id=<?php echo $unicorn->id ?>"><?php echo $unicorn->name ?></a>
+                    <a class="btn btn-light" href="unicorn.php?id=<?php echo $unicorn->id ?>">Läs mer...</a>
+                </li>
+            <?php endforeach; ?>
+            </ul>
+        </section>
     </section>
 </body>
 </html>
